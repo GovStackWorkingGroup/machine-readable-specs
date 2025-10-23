@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite id="govstack-bb-wallet-kdf-4_1" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
+<testsuite id="govstack-bb-wallet-kdf" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
     <metadata>
         <gitb:name>GovStack BB Wallet</gitb:name>
         <gitb:version>1.0.0</gitb:version>
         <gitb:description>A test suite to validate UBL invoices uploaded by a user</gitb:description>
         <gitb:authors>Ali González</gitb:description>
-        <gitb:authors>
-            <gitb:reference>govstack-bb-wallet-kdf-4_1</gitb:reference>
-            <gitb:description>Key Digital Functionalities 4.1. Credential Discovery</gitb:description>
-            <gitb:link>https://wallet.govstack.global/4-key-digital-functionalities#id-1.1.-importing-credentials-into-wallet</gitb:link>
+        <gitb:specification>
+            <gitb:reference>govstack-bb-wallet</gitb:reference>
+            <gitb:description>GovStack Wallet Building Block</gitb:description>
+            <gitb:link>https://wallet.govstack.global/</gitb:link>
         </gitb:specification>
     </metadata>
     <actors>
@@ -29,10 +29,5 @@
             <gitb:desc>The credential verifier is an entity responsible for checking the authenticity and validity of digital credentials presented by a credential holder.</gitb:desc>
         </gitb:actor>
     </actors>
-    <groups>
-        <gitb:group id="kdf_8_1"/>
-            <gitb:name>8.1 Credential Discovery</gitb:name>
-        </gitb:group>
-    </groups>
-    <testcase id="8_1_1" group="kdf_8_1"/>
+    <testcase id="credentialOffer"/>
 </testsuite>
