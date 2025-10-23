@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite id="govstack-bb-wallet-kdf-4_1" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
+    <metadata>
+        <gitb:name>GovStack BB Wallet</gitb:name>
+        <gitb:version>1.0.0</gitb:version>
+        <gitb:description>A test suite to validate UBL invoices uploaded by a user</gitb:description>
+        <gitb:authors>Ali González</gitb:description>
+        <gitb:authors>
+            <gitb:reference>govstack-bb-wallet-kdf-4_1</gitb:reference>
+            <gitb:description>Key Digital Functionalities 4.1. Credential Discovery</gitb:description>
+            <gitb:link>https://wallet.govstack.global/4-key-digital-functionalities#id-1.1.-importing-credentials-into-wallet</gitb:link>
+        </gitb:specification>
+    </metadata>
+    <actors>
+        <gitb:actor id="digitalWallet">
+            <gitb:name>Digital Wallet Container</gitb:name>
+            <gitb:desc>A Container refers to the technical medium or environment in which Verifiable Credentials (VCs) are securely stored, managed, and accessed by the holder. It ensures data protection, interoperability, access control, and portability of credentials.</gitb:desc>
+        </gitb:actor>
+        <gitb:actor id="Holder">
+            <gitb:name>Credential Holder</gitb:name>
+            <gitb:desc>The credential holder is an entity (person, device, or system) that possesses and manages digital credentials within a system or framework.</gitb:desc>
+        </gitb:actor>
+        <gitb:actor id="Issuer">
+            <gitb:name>Credential Issuer</gitb:name>
+            <gitb:desc>A credential issuer is an entity responsible for the lifecycle management of credentials (e.g. issuance and revocation of credentials). This entity is typically trusted to verify and confirm the identity of the credential holder before issuing credentials.</gitb:desc>
+        </gitb:actor>
+        <gitb:actor id="Verifier" hidden="true">
+            <gitb:name>Credential Verifier</gitb:name>
+            <gitb:desc>The credential verifier is an entity responsible for checking the authenticity and validity of digital credentials presented by a credential holder.</gitb:desc>
+        </gitb:actor>
+    </actors>
+    <groups>
+        <gitb:group id="kdf_8_1"/>
+            <gitb:name>8.1 Credential Discovery</gitb:name>
+        </gitb:group>
+    </groups>
+    <testcase id="8_1_1" group="kdf_8_1"/>
+</testsuite>

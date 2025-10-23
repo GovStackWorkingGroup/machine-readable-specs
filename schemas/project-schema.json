@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the project"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the project"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the project"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the project"
+    },
+    "workingGroup": {
+      "$ref": "working-group-schema.json",
+      "description": "Associated working group for the project"
+    }
+  },
+  "required": ["id", "name", "startDate"]
+}

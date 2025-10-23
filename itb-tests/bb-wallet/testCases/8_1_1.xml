@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase id="8_1_1" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
+    <metadata>
+        <gitb:name>8.1.1. Credential Offer Endpoint</gitb:name>
+        <gitb:version>1.0.0</gitb:version>
+        <gitb:description>This endpoint is used by a credential issuer that is already interacting with a Holder who wishes to initiate a credential issuance. It is used to pass available information relevant for the credential issuance to ensure a convenient and secure process.</gitb:description>
+        <gitb:specification>
+            <gitb:reference>govstack-bb-wallet-kdf-4_1</gitb:reference>
+            <gitb:description>A wallet holder who intends to receive credentials from an issuer should be able to get relevant information on how to obtain the credentials, so that, the process of credential issuance is convenient and secure.</gitb:description>
+            <gitb:link>https://wallet.govstack.global/4-key-digital-functionalities#id-1.1.-importing-credentials-into-wallet</gitb:link>
+        </gitb:specification>
+    </metadata>
+    <preliminary desc="A wallet has a Credential Offer Endpoint">
+        <instruct desc="Preparation instructions">Your wallet must provide an endpoint for an issuer to submit a Credential Offer Object</instruct>
+        <request desc="Provide an endpoint for credential offer" contentType="string">$credentialOfferURI</request>
+    </preliminary>
+    <variables>
+        <var name="$credentialOfferURI" type="string"/>
+    </variables>
+    <actors>
+        <gitb:actor id="Wallet" name="digitalWallet" role="SUT"/>
+        <gitb:actor id="Issuer" name="Credential Issuer"/>
+    </actors>
+    <steps>
+        <btxn txnId="t1" handler="HttpMessagingV2"/>
+        <send id="dataSend" desc="Send data" txnId="t1">
+            <input name="uri">$credentialOfferURI</input>
+            <input name="method">"GET"</input>
+        </send>
+        <log>$dataSend{response}{status}</log>
+        <etxn txnId="t1"/>
+        <verify handler="NumberValidator" desc="Check status code is 200">
+            <input name="actual">$dataSend{response}{status}</input>
+            <input name="expected">'200'</input>
+            <input name="successMessage">'The status code 200 was received.'</input>
+            <input name="failureMessage">'The status code was not 200.'</input>
+        </verify>
+    </steps>
+    <output>
+        <success>
+            <default>"Test session completed successfully."</default>
+        </success>
+        <failure>
+            <default>"The test session resulted in a failure. Please check the validation reports and apply required corrections."</default>
+        </failure>
+    </output>
+</testcase>

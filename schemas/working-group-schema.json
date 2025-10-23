@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Working Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the working group"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the working group"
+    },
+    "description": {
+      "description": "Description of the working group"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "person-schema.json"
+      },
+      "description": "List of members in the working group"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "project-schema.json"
+      },
+      "description": "List of projects undertaken by the working group"
+    },
+    "publications": {
+      "type": "array",
+      "items": {
+        "$ref": "publication-schema.json"
+      },
+      "description": "List of publications produced by the working group"
+    },
+  },
+  "required": ["id", "name"]
+}

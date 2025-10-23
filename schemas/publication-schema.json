@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Publication",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the publication"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the publication"
+    },
+    "versionNumber": {
+      "type": "string",
+      "description": "Current version number of the publication (e.g., '1.0', '2.1')"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "$ref": "person-schema.json"
+      },
+      "description": "List of authors of the publication"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the publication was published"
+    },
+    "workingGroup": {
+      "$ref": "working-group-schema.json",
+      "description": "Associated working group for the publication"
+    },
+    "versionHistory": {
+      "type": "array",
+      "description": "Version history of the publication",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "title": false,
+              "workingGroup": false,
+              "content": false,
+            },
+            "required": ["id", "versionNumber", "publishedDate", "authors"]
+          }
+        ]
+      }
+    },
+    "content": {
+      "type": "object",
+      "description": "Content of the publication (to be defined by specific implementations)"
+    },
+    "releaseNotes": {
+      "$ref": "release-notes-schema.json",
+      "description": "Optional link to a release notes document for this publication"
+    }
+  },
+  "required": ["id", "title", "versionNumber", "authors", "publishedDate", "content"]
+}
