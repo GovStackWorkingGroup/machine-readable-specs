@@ -1,9 +1,10 @@
 {
+  "$id": "https://example.com/schemas/project",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Project",
   "type": "object",
   "properties": {
-    "id": {
+    "identifier": {
       "type": "string",
       "description": "Unique identifier for the project"
     },
@@ -56,14 +57,14 @@
       "type": "array",
       "description": "Owning parties for the project: Working Groups, Teams, or Persons",
       "items": {
-        "anyOf": [
-          { "$ref": "working-group-schema.json", "description": "A Working Group that owns the project" },
-          { "$ref": "team-schema.json", "description": "A Team that owns the project (schema to be defined)" },
-          { "$ref": "person-schema.json", "description": "An individual Person that owns the project" }
+        "oneOf": [
+          { "$ref": "/schemas/working-group", "description": "A Working Group that owns the project" },
+          { "$ref": "/schemas/team", "description": "A Team that owns the project (schema to be defined)" },
+          { "$ref": "/schemas/person", "description": "An individual Person that owns the project" }
         ]
       },
       "minItems": 1
     }
   },
-  "required": ["id", "name", "startDate", "owners"]
+  "required": ["identifier", "name", "startDate", "owners"]
 }

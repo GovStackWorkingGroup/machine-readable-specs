@@ -1,0 +1,15 @@
+---
+identifier: govstack-wg-wallet
+name: Wallet
+description: >
+  The Wallet Working Group defines and maintains technical specifications and guidance
+  for secure, interoperable digital wallets in GovStack. These specifications enable
+  use cases like identity credentials, consent, and payments — supporting global
+  digital public infrastructure.
+status: active
+projects:
+  - govstack-proj-1
+publications:
+  - govstack-bb-wallet
+specifications:
+  - govstack-bb-wallet

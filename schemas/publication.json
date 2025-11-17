@@ -1,9 +1,10 @@
 {
+  "$id": "https://example.com/schemas/publication",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Publication",
   "type": "object",
   "properties": {
-    "id": {
+    "identifier": {
       "type": "string",
       "description": "Unique identifier for the publication"
     },
@@ -18,7 +19,7 @@
     "authors": {
       "type": "array",
       "items": {
-        "$ref": "person-schema.json"
+        "$ref": "/schemas/person"
       },
       "description": "List of authors of the publication"
     },
@@ -28,7 +29,7 @@
       "description": "Date when the publication was published"
     },
     "workingGroup": {
-      "$ref": "working-group-schema.json",
+      "$ref": "/schemas/working-group",
       "description": "Associated working group for the publication"
     },
     "versionHistory": {
@@ -44,9 +45,9 @@
             "properties": {
               "title": false,
               "workingGroup": false,
-              "content": false,
+              "content": false
             },
-            "required": ["id", "versionNumber", "publishedDate", "authors"]
+            "required": ["identifier", "versionNumber", "publishedDate", "authors"]
           }
         ]
       }
@@ -56,9 +57,9 @@
       "description": "Content of the publication (to be defined by specific implementations)"
     },
     "releaseNotes": {
-      "$ref": "release-notes-schema.json",
+      "$ref": "/schemas/release-notes",
       "description": "Optional link to a release notes document for this publication"
     }
   },
-  "required": ["id", "title", "versionNumber", "authors", "publishedDate", "content"]
+  "required": ["identifier", "title", "versionNumber", "authors", "publishedDate", "content"]
 }

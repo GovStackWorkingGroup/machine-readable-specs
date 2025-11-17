@@ -9,6 +9,10 @@ This project maps and denotes the necessary entities for the publication of GovS
 
 Although a Ruby helper is provided, any programming language can be used to build on top of these schemas and data.
 
+## Status
+
+Work in progress
+
 ## Repository structure
 
 - `schemas/` — JSON Schemas for GovStack specification entities (e.g., person, project, publication)
@@ -48,10 +52,9 @@ bundle exec ruby scripts/schema_cli.rb template project --format json --include-
 ```bash
 bundle exec ruby scripts/schema_cli.rb validate working-group data/working-groups/wallet.yml
 ```
+More info on [the tool README](./scripts/README.md)
 
-## Status
 
-Work in progress
 
 ## Contributing
 

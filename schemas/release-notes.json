@@ -1,26 +1,27 @@
 {
+  "$id": "https://example.com/schemas/release-notes",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Release Notes",
   "allOf": [
     {
-      "$ref": "publication-schema.json"
+      "$ref": "/schemas/publication"
     },
     {
       "type": "object",
       "properties": {
-        "id": {
+        "identifier": {
           "type": "string",
           "description": "Unique identifier for the release notes"
         },
         "authors": {
           "type": "array",
           "items": {
-            "$ref": "person-schema.json"
+            "$ref": "/schemas/person"
           },
           "description": "List of authors of the release notes"
         }
       },
-      "required": ["id", "authors"],
+      "required": ["identifier", "authors"],
       "propertiesToRemove": ["versionHistory", "workingGroup", "versionNumber"]
     }
   ]

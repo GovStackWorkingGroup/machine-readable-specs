@@ -1,0 +1,12 @@
+{
+  "$id": "https://example.com/schemas/team",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team",
+  "type": "object",
+  "properties": {
+    "identifier": { "type": "string", "description": "Unique identifier for the team" },
+    "name": { "type": "string", "description": "Team name" },
+    "description": { "type": "string", "description": "Team description" }
+  },
+  "required": ["identifier", "name"]
+}

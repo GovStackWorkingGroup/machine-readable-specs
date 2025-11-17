@@ -1,9 +1,10 @@
 {
+  "$id": "https://example.com/schemas/person",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Person",
   "type": "object",
   "properties": {
-    "id": {
+    "identifier": {
       "type": "string",
       "description": "Unique identifier for the person"
     },
@@ -21,5 +22,5 @@
       "description": "Affiliation or organization the person belongs to"
     }
   },
-  "required": ["id", "name", "email"]
+  "required": ["identifier", "name", "email"]
 }
