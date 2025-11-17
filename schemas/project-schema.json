@@ -25,10 +25,45 @@
       "format": "date",
       "description": "End date of the project"
     },
-    "workingGroup": {
-      "$ref": "working-group-schema.json",
-      "description": "Associated working group for the project"
+    "lifecycleStatus": {
+      "description": "Lifecycle status of the project from inception to closure",
+      "oneOf": [
+        { "const": "discovery", "description": "Pre-planning research and exploration to assess feasibility and scope; no formal approval yet." },
+        { "const": "proposed", "description": "Idea submitted for consideration; awaiting review and approval." },
+        { "const": "approved", "description": "Decision made to proceed; resourcing and high-level scope confirmed." },
+        { "const": "planned", "description": "Timelines, scope, and resources defined; execution not yet started." },
+        { "const": "in-progress", "description": "Active execution of planned work." },
+        { "const": "on-hold", "description": "Paused deliberately by decision; may resume later." },
+        { "const": "blocked", "description": "Cannot proceed due to external dependency, constraint, or unresolved risk." },
+        { "const": "completed", "description": "All scoped work delivered and accepted." },
+        { "const": "maintenance", "description": "Post-delivery upkeep, minor enhancements, and support." },
+        { "const": "sunset", "description": "Formal wind-down of deliverables and decommissioning." },
+        { "const": "cancelled", "description": "Stopped before completion; no further work planned." },
+        { "const": "archived", "description": "Finalized record retained; no changes expected." }
+      ],
+      "default": "proposed"
+    },
+    "healthStatus": {
+        "description": "Delivery health signal used for governance and reporting",
+        "oneOf": [
+          { "const": "on-track", "description": "Progressing as planned with no material risks to scope, schedule, or quality." },
+          { "const": "at-risk", "description": "Issues exist that could impact scope, schedule, or quality if not addressed; mitigation in progress." },
+          { "const": "off-track", "description": "Material slippage or issues; recovery plan required and/or approved baseline no longer valid." }
+        ],
+        "default": "on-track"
+    },
+    "owners": {
+      "type": "array",
+      "description": "Owning parties for the project: Working Groups, Teams, or Persons",
+      "items": {
+        "anyOf": [
+          { "$ref": "working-group-schema.json", "description": "A Working Group that owns the project" },
+          { "$ref": "team-schema.json", "description": "A Team that owns the project (schema to be defined)" },
+          { "$ref": "person-schema.json", "description": "An individual Person that owns the project" }
+        ]
+      },
+      "minItems": 1
     }
   },
-  "required": ["id", "name", "startDate"]
+  "required": ["id", "name", "startDate", "owners"]
 }

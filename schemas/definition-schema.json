@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Definition",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Stable identifier in the form govstack-definition-X where X is a number",
+      "pattern": "^govstack-definition-\\d+$",
+      "examples": ["govstack-definition-1", "govstack-definition-42"]
+    },
+    "definition": {
+      "type": "string",
+      "description": "The definition text content. See definitionFormat for the media type (markdown, HTML, or plain text)."
+    },
+    "definitionFormat": {
+      "description": "Media type of the definition content",
+      "oneOf": [
+        { "const": "text/markdown", "description": "Markdown content (CommonMark-compatible)." },
+        { "const": "text/html", "description": "HTML content (sanitized as needed by consumers)." },
+        { "const": "text/plain", "description": "Plain text without markup." }
+      ],
+      "default": "text/markdown"
+    },
+    "owner": {
+      "description": "Owning party for this definition (exactly one): Working Group or Team",
+      "oneOf": [
+        { "$ref": "working-group-schema.json", "description": "A Working Group that owns the definition" },
+        { "$ref": "team-schema.json", "description": "A Team that owns the definition (schema to be defined)" }
+      ]
+    },
+    "definedOn": {
+      "$ref": "specification-schema.json",
+      "description": "The Specification this definition is formally defined on (schema will inherit from Publication)."
+    },
+    "usedBy": {
+      "type": "array",
+      "description": "Publications that use or reference this definition",
+      "items": {
+        "$ref": "publication-schema.json"
+      }
+    },
+    "status": {
+      "description": "Publication status of the definition",
+      "oneOf": [
+        { "const": "draft", "description": "Work in progress; not yet ready for broad review." },
+        { "const": "review", "description": "Under review by stakeholders for approval." },
+        { "const": "published", "description": "Approved and published for general use." },
+        { "const": "deprecated", "description": "No longer recommended for use; may be removed in the future." }
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "identifier",
+    "definition",
+    "definitionFormat",
+    "owner",
+    "definedOn",
+    "status"
+  ]
+}
