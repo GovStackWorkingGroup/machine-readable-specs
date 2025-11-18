@@ -3,59 +3,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Working Group",
   "type": "object",
-  "properties": {
-    "identifier": {
-      "type": "string",
-      "description": "Unique identifier for the working group"
-    },
-    "name": {
-      "type": "string",
-      "description": "Name of the working group"
-    },
-    "status": {
-      "type": "string",
-      "enum": ["active", "inactive", "closed"],
-      "description": "Current lifecycle status of the working group"
-    },
-    "specifications": {
-      "type": "array",
-      "items": {
-        "if": { "type": "object" },
-        "then": { "$ref": "/schemas/publication" },
-        "else": { "type": "string", "description": "Reference to a publication identifier" }
-      },
-      "description": "List of specification documents maintained by the working group (objects or string IDs)"
-    },
-    "description": {
-      "description": "Description of the working group"
-    },
-    "members": {
-      "type": "array",
-      "items": {
-        "if": { "type": "object" },
-        "then": { "$ref": "/schemas/person" },
-        "else": { "type": "string", "description": "Reference to a person identifier" }
-      },
-      "description": "List of members in the working group (objects or string IDs)"
-    },
-    "projects": {
-      "type": "array",
-      "items": {
-        "if": { "type": "object" },
-        "then": { "$ref": "/schemas/project" },
-        "else": { "type": "string", "description": "Reference to a project identifier" }
-      },
-      "description": "List of projects undertaken by the working group (objects or string IDs)"
-    },
-    "publications": {
-      "type": "array",
-      "items": {
-        "if": { "type": "object" },
-        "then": { "$ref": "/schemas/publication" },
-        "else": { "type": "string", "description": "Reference to a publication identifier" }
-      },
-      "description": "List of publications produced by the working group (objects or string IDs)"
+  "allOf": [
+    { "$ref": "https://example.com/schemas/team" },
+    {
+      "type": "object",
+      "properties": {
+        "specifications": {
+          "type": "array",
+          "items": { "type": "string", "description": "Reference to a specification publication identifier" },
+          "description": "List of specification document identifiers maintained by the working group"
+        }
+      }
     }
-  },
-  "required": ["identifier", "name"]
+  ]
 }

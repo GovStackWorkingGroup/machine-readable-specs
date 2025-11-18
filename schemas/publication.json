@@ -8,48 +8,48 @@
       "type": "string",
       "description": "Unique identifier for the publication"
     },
-    "title": {
+    "name": {
       "type": "string",
-      "description": "Title of the publication"
+      "description": "Name of the publication"
     },
-    "versionNumber": {
+    "version": {
       "type": "string",
-      "description": "Current version number of the publication (e.g., '1.0', '2.1')"
+      "description": "Current version number of the publication  using semver (e.g., '1.0.0', '2.1.0, 1.2.0-rc')"
     },
     "authors": {
       "type": "array",
       "items": {
-        "$ref": "/schemas/person"
+        "$ref": "https://example.com/schemas/person"
       },
       "description": "List of authors of the publication"
+    },
+    "editors": {
+      "type": "array",
+      "items": { "$ref": "https://example.com/schemas/person" },
+      "description": "Optional list of editors for the publication"
+    },
+    "reviewers": {
+      "type": "array",
+      "items": { "$ref": "https://example.com/schemas/person" },
+      "description": "Optional list of reviewers for the publication"
     },
     "publishedDate": {
       "type": "string",
       "format": "date",
       "description": "Date when the publication was published"
     },
-    "workingGroup": {
-      "$ref": "/schemas/working-group",
-      "description": "Associated working group for the publication"
-    },
     "versionHistory": {
       "type": "array",
-      "description": "Version history of the publication",
+      "description": "Version history of the publication (summaries of past versions)",
       "items": {
-        "allOf": [
-          {
-            "$ref": "#"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "title": false,
-              "workingGroup": false,
-              "content": false
-            },
-            "required": ["identifier", "versionNumber", "publishedDate", "authors"]
-          }
-        ]
+        "type": "object",
+        "properties": {
+          "identifier": { "type": "string" },
+          "version": { "type": "string" },
+          "publishedDate": { "type": "string", "format": "date" }
+        },
+        "required": ["identifier", "version", "publishedDate"],
+        "additionalProperties": true
       }
     },
     "content": {
@@ -57,9 +57,11 @@
       "description": "Content of the publication (to be defined by specific implementations)"
     },
     "releaseNotes": {
-      "$ref": "/schemas/release-notes",
-      "description": "Optional link to a release notes document for this publication"
+      "description": "Optional link to release notes (object or string ID)",
+      "if": { "type": "object" },
+      "then": { "$ref": "https://example.com/schemas/release-notes" },
+      "else": { "type": "string", "description": "Reference to a release notes identifier" }
     }
   },
-  "required": ["identifier", "title", "versionNumber", "authors", "publishedDate", "content"]
+  "required": ["identifier", "name", "version", "authors", "publishedDate", "content"]
 }

@@ -2,27 +2,34 @@
   "$id": "https://example.com/schemas/release-notes",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Release Notes",
-  "allOf": [
-    {
-      "$ref": "/schemas/publication"
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique identifier for the release notes"
     },
-    {
+    "name": {
+      "type": "string",
+      "description": "Name or title of the release notes"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version tag of the release notes"
+    },
+    "authors": {
+      "type": "array",
+      "items": { "$ref": "https://example.com/schemas/person" },
+      "description": "List of authors of the release notes"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the release notes were published"
+    },
+    "content": {
       "type": "object",
-      "properties": {
-        "identifier": {
-          "type": "string",
-          "description": "Unique identifier for the release notes"
-        },
-        "authors": {
-          "type": "array",
-          "items": {
-            "$ref": "/schemas/person"
-          },
-          "description": "List of authors of the release notes"
-        }
-      },
-      "required": ["identifier", "authors"],
-      "propertiesToRemove": ["versionHistory", "workingGroup", "versionNumber"]
+      "description": "Content block for the release notes"
     }
-  ]
+  },
+  "required": ["identifier", "authors"]
 }

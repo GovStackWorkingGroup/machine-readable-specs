@@ -1,0 +1,24 @@
+{
+  "$id": "https://example.com/schemas/specification",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Specification",
+  "type": "object",
+  "allOf": [
+    { "$ref": "https://example.com/schemas/publication" },
+    {
+      "type": "object",
+      "required": ["workingGroup"],
+      "properties": {
+        "status": { "enum": ["draft", "snapshot", "candidate","release", "deprecated"], "description": "Publication status on the specification track cycle (e.g., draft, published, deprecated)" },
+        "version": {"type": "string", "description": "Version identifier of the specification using semver (e.g., '1.0.0', '2.1.0, 1.2.0-rc')"},
+        "hosted_at": { "type": "string", "format": "uri", "description": "Canonical URL where the specification is hosted" },
+        "workingGroup": {
+          "description": "Associated working group for the publication (object or string ID)",
+          "if": { "type": "object" },
+          "then": { "$ref": "https://example.com/schemas/working-group" },
+          "else": { "type": "string", "description": "Reference to a working group identifier" }
+        }
+      }
+    }
+  ]
+}

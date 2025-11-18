@@ -6,7 +6,5 @@
   "endDate": "",
   "lifecycleStatus": "proposed",
   "healthStatus": "on-track",
-  "owners": [
-    null
-  ]
+  "owners": null
 }

@@ -6,7 +6,27 @@
   "properties": {
     "identifier": { "type": "string", "description": "Unique identifier for the team" },
     "name": { "type": "string", "description": "Team name" },
-    "description": { "type": "string", "description": "Team description" }
+    "description": { "type": "string", "description": "Team description" },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "closed"],
+      "description": "Current lifecycle status of the team"
+    },
+    "members": {
+      "type": "array",
+      "items": { "type": "string", "description": "Reference to a person identifier" },
+      "description": "List of member identifiers in the team"
+    },
+    "projects": {
+      "type": "array",
+      "items": { "type": "string", "description": "Reference to a project identifier" },
+      "description": "List of project identifiers undertaken by the team"
+    },
+    "publications": {
+      "type": "array",
+      "items": { "type": "string", "description": "Reference to a publication identifier" },
+      "description": "List of publication identifiers produced by the team"
+    }
   },
-  "required": ["identifier", "name"]
+  "required": ["identifier", "name", "status", "members"]
 }

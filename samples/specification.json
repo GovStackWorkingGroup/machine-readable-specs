@@ -1,0 +1,19 @@
+{
+  "identifier": "bb-wallet-spec",
+  "name": "BB Wallet Specification",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "identifier": "govstack-person-1",
+      "name": "Test Person",
+      "email": "test@example.org",
+      "url": "https://example.org",
+      "affiliation": {"name": "GovStack", "url": "https://govstack.global"}
+    }
+  ],
+  "publishedDate": "2025-09-01",
+  "content": {},
+  "workingGroup": "govstack-wg-wallet",
+  "status": "release",
+  "hosted_at": "https://wallet.govstack.global/"
+}

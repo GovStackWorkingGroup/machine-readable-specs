@@ -1,0 +1,24 @@
+{
+  "$id": "https://example.com/schemas/owners",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owners Array",
+  "description": "Reusable owners array. Each owner can be either an object with identifier/name/type or a string ID.",
+  "type": "array",
+  "items": {
+    "if": { "type": "object" },
+    "then": {
+      "type": "object",
+      "properties": {
+        "identifier": { "type": "string", "description": "Unique identifier of the owner" },
+        "name": { "type": "string", "description": "Display name of the owner" },
+        "type": {
+          "description": "Owner type: working-group, team or person",
+          "enum": ["team", "person", "working-group"]
+        }
+      },
+      "required": ["identifier", "name", "type"],
+      "additionalProperties": true
+    },
+    "else": { "type": "string", "description": "Reference to an owner identifier (team or person)" }
+  }
+}

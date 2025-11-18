@@ -6,7 +6,13 @@
   "properties": {
     "identifier": {
       "type": "string",
-      "description": "Unique identifier for the person"
+      "description": "Unique identifier for the person",
+      "pattern": "^govstack-person-[0-9]+$",
+      "examples": [
+        "govstack-person-1",
+        "govstack-person-20",
+        "govstack-person-1000"
+      ]
     },
     "name": {
       "type": "string",
@@ -17,10 +23,19 @@
       "format": "email",
       "description": "Email address of the person"
     },
-    "affiliation": {
+    "url": {
       "type": "string",
-      "description": "Affiliation or organization the person belongs to"
+      "format": "uri",
+      "description": "Personal website of the user"
+    },
+    "affiliation": {
+      "type": "object",
+      "description": "Affiliation or organization the person belongs to",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the organization" },
+        "url": { "type": "string", "format": "uri", "description": "Organization website" }
+      }
     }
   },
-  "required": ["identifier", "name", "email"]
+  "required": ["identifier", "name"]
 }

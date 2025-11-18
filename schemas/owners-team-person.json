@@ -1,0 +1,20 @@
+{
+  "$id": "https://example.com/schemas/owners-team-person",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owners Array (Team or Person)",
+  "description": "Owners array restricted to team or person types.",
+  "allOf": [
+    { "$ref": "https://example.com/schemas/owners" },
+    {
+      "type": "array",
+      "items": {
+        "if": { "type": "object" },
+        "then": {
+          "properties": {
+            "type": { "enum": ["team", "person"], "description": "Allowed owner types for projects" }
+          }
+        }
+      }
+    }
+  ]
+}

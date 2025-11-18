@@ -1,11 +1,8 @@
 {
   "identifier": "",
   "name": "",
+  "description": "",
   "status": "active",
-  "specifications": [
-
-  ],
-  "description": null,
   "members": [
 
   ],
@@ -13,6 +10,9 @@
 
   ],
   "publications": [
+
+  ],
+  "specifications": [
 
   ]
 }

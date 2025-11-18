@@ -1,0 +1,13 @@
+{
+  "identifier": "govstack-project-1000",
+  "name": "Sample Project",
+  "startDate": "2025-01-01",
+  "owners": [
+    {
+      "identifier": "govstack-person-1",
+      "name": "Test Person",
+      "email": "test@example.org",
+      "type": "person"
+    }
+  ]
+}

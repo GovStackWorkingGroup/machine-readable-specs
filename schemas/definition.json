@@ -30,19 +30,19 @@
     "owner": {
       "description": "Owning party for this definition (exactly one): Working Group or Team",
       "oneOf": [
-        { "$ref": "/schemas/working-group", "description": "A Working Group that owns the definition" },
-        { "$ref": "/schemas/team", "description": "A Team that owns the definition (schema to be defined)" }
+        { "$ref": "https://example.com/schemas/working-group", "description": "A Working Group that owns the definition" },
+        { "$ref": "https://example.com/schemas/team", "description": "A Team that owns the definition (schema to be defined)" }
       ]
     },
     "definedOn": {
-      "$ref": "/schemas/specification",
+      "$ref": "https://example.com/schemas/specification",
       "description": "The Specification this definition is formally defined on (schema will inherit from Publication)."
     },
     "usedBy": {
       "type": "array",
       "description": "Publications that use or reference this definition",
       "items": {
-        "$ref": "/schemas/publication"
+        "$ref": "https://example.com/schemas/publication"
       }
     },
     "status": {

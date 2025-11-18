@@ -6,7 +6,13 @@
   "properties": {
     "identifier": {
       "type": "string",
-      "description": "Unique identifier for the project"
+      "description": "Unique identifier for the project",
+      "pattern": "^govstack-project-[0-9]+$",
+      "examples": [
+        "govstack-project-1",
+        "govstack-project-99",
+        "govstack-project-1000"
+      ]
     },
     "name": {
       "type": "string",
@@ -54,15 +60,8 @@
         "default": "on-track"
     },
     "owners": {
-      "type": "array",
-      "description": "Owning parties for the project: Working Groups, Teams, or Persons",
-      "items": {
-        "oneOf": [
-          { "$ref": "/schemas/working-group", "description": "A Working Group that owns the project" },
-          { "$ref": "/schemas/team", "description": "A Team that owns the project (schema to be defined)" },
-          { "$ref": "/schemas/person", "description": "An individual Person that owns the project" }
-        ]
-      },
+      "description": "Owning parties for the project: owner objects or string IDs",
+      "$ref": "https://example.com/schemas/owners-team-person",
       "minItems": 1
     }
   },

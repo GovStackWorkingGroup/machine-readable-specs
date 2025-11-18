@@ -2,5 +2,9 @@
   "identifier": "",
   "name": "",
   "email": "",
-  "affiliation": ""
+  "url": "",
+  "affiliation": {
+    "name": "",
+    "url": ""
+  }
 }
