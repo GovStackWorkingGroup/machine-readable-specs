@@ -13,6 +13,7 @@ require 'optparse'
 require 'pathname'
 require 'json-schema'
 require 'addressable/uri'
+require 'fileutils'
 
 # Ensure stdout is unbuffered so success messages always appear, even when run via tools/CI
 $stdout.sync = true
@@ -32,8 +33,10 @@ class JsonSchemaValidatorCLI
     when 'validate'     then cmd_validate(@argv)
     when 'template'     then cmd_template(@argv)
     when 'generate-templates' then cmd_generate_templates(@argv)
+    when 'bundle'       then cmd_bundle(@argv)
+    when 'generate-bundles' then cmd_generate_bundles(@argv)
     else
-      warn "Unknown or missing command. Supported: list-schemas, validate, template, generate-templates"
+      warn "Unknown or missing command. Supported: list-schemas, validate, template, generate-templates, bundle, generate-bundles"
       exit 1
     end
   end
@@ -229,6 +232,135 @@ class JsonSchemaValidatorCLI
       schema.delete('$schema')
     end
     schema
+  end
+
+  # ---------------- Schema Bundling ----------------
+
+  # Bundle a single schema: collect all reachable $ref targets (local repo schemas) into $defs and rewrite $ref pointers.
+  # Usage: bundle <schema-name|path> [--out FILE]
+  def cmd_bundle(argv)
+    options = { out: nil }
+    opt = OptionParser.new do |o|
+      o.on('--out FILE', 'Write bundled schema to FILE (default: stdout)') { |v| options[:out] = v }
+    end
+    opt.parse!(argv)
+    schema_name_or_path = argv.shift or abort 'Usage: bundle <schema-name|path> [--out FILE]'
+    schema_path = schema_path_for(schema_name_or_path)
+    raw = ensure_meta_schema(JSON.parse(File.read(schema_path)))
+    defs = {}
+    visited = {}
+    bundled_root = deep_clone(raw)
+    bundle_expand!(bundled_root, defs, visited)
+    bundled_root['$defs'] = defs unless defs.empty?
+    output = JSON.pretty_generate(bundled_root)
+    if options[:out]
+      FileUtils.mkdir_p(File.dirname(options[:out]))
+      File.write(options[:out], output)
+      puts "Bundled schema written to #{options[:out]} (#{defs.keys.size} def#{defs.keys.size == 1 ? '' : 's'})"
+    else
+      puts output
+    end
+  end
+
+  # Generate bundled schemas for all root schemas into schemas/bundled/<name>.json
+  def cmd_generate_bundles(_argv)
+    out_dir = SCHEMAS_DIR.join('bundled')
+    FileUtils.mkdir_p(out_dir)
+    count = 0
+    failures = []
+    Dir.glob(SCHEMAS_DIR.join('*.json')).sort.each do |schema_path|
+      begin
+        raw = ensure_meta_schema(JSON.parse(File.read(schema_path)))
+        defs = {}
+        visited = {}
+        bundled = deep_clone(raw)
+        bundle_expand!(bundled, defs, visited)
+        bundled['$defs'] = defs unless defs.empty?
+        name = File.basename(schema_path)
+        File.write(out_dir.join(name), JSON.pretty_generate(bundled))
+        puts "Bundled: #{name} (#{defs.keys.size} def#{defs.keys.size == 1 ? '' : 's'})"
+        count += 1
+      rescue => e
+        failures << [File.basename(schema_path), e.message]
+      end
+    end
+    puts "Generated bundled schemas for #{count} schema#{count == 1 ? '' : 's'} into #{out_dir.relative_path_from(ROOT)}"
+    unless failures.empty?
+      puts "Failed #{failures.size} schema#{failures.size == 1 ? '' : 's'}:" 
+      failures.each { |n,m| puts "  - #{n}: #{m}" }
+    end
+  end
+
+  # Recursively expand $ref nodes in place; collect referenced schemas in defs and rewrite ref to point to local $defs path.
+  def bundle_expand!(node, defs, visited)
+    case node
+    when Hash
+      if node.key?('$ref')
+        ref = node['$ref']
+        target = resolve_ref_for_bundling(ref)
+        if target
+          name = bundle_def_name(ref, target)
+          unless defs.key?(name)
+            defs[name] = deep_clone(target)
+            # Recurse into newly added definition to expand its refs
+            bundle_expand!(defs[name], defs, visited)
+          end
+          # Rewrite $ref to internal pointer
+          node['$ref'] = "#/$defs/#{name}"
+        end
+      end
+      # Traverse children
+      node.each do |k,v|
+        next if k == '$ref'
+        bundle_expand!(v, defs, visited)
+      end
+    when Array
+      node.each { |el| bundle_expand!(el, defs, visited) }
+    end
+  end
+
+  def bundle_def_name(ref, target_schema)
+    # Prefer basename of path portion
+    begin
+      u = Addressable::URI.parse(ref)
+      base = File.basename(u.path.to_s)
+      base = base.sub(/\.json$/,'')
+      return base unless base.nil? || base.empty?
+    rescue
+    end
+    # Fallback to $id or a generated name
+    id = target_schema['$id']
+    if id
+      digest = id.gsub(/[^a-zA-Z0-9]+/, '_')
+      return digest
+    end
+    "def_#{defs.size+1}"
+  end
+
+  def resolve_ref_for_bundling(ref)
+    begin
+      u = Addressable::URI.parse(ref)
+      path = u.path
+      return nil unless path
+      base = File.basename(path)
+      base = base.end_with?('.json') ? base : "#{base}.json"
+      local = SCHEMAS_DIR.join(base)
+      return ensure_meta_schema(JSON.parse(File.read(local))) if File.exist?(local)
+    rescue
+      return nil
+    end
+    nil
+  end
+
+  def deep_clone(obj)
+    case obj
+    when Hash
+      obj.each_with_object({}) { |(k,v),h| h[k] = deep_clone(v) }
+    when Array
+      obj.map { |e| deep_clone(e) }
+    else
+      obj
+    end
   end
 
   # ---------------- Template Generation ----------------

@@ -7,6 +7,8 @@ Supported operations:
 - List available schemas
 - Validate one or more data files against a schema (YAML or JSON)
 - Print a requirements summary only (without validating) via `--summary-only`
+- Bundle a schema (inline / collect its referenced schemas into `$defs`)
+- Bulk bundle all schemas
 
 Template generation is now supported directly by the validator script.
 
@@ -50,6 +52,15 @@ bundle exec ruby scripts/schema_validator.rb generate-templates
 
 # Only JSON templates (required only)
 bundle exec ruby scripts/schema_validator.rb generate-templates --only json --required-only --out-dir tmp/templates
+
+# Bundle a single schema (writes to stdout)
+bundle exec ruby scripts/schema_validator.rb bundle specification
+
+# Bundle a single schema to a file
+bundle exec ruby scripts/schema_validator.rb bundle specification --out tmp/bundled/specification.json
+
+# Bulk bundle all schemas into schemas/bundled/
+bundle exec ruby scripts/schema_validator.rb generate-bundles
 ```
 
 Example output (success):
@@ -95,8 +106,9 @@ The `json-schema` gem (v6.x) doesn’t implement draft 2020‑12 meta-validation
 
 ### Limitations / Future Enhancements
 
-- Bundled schema emission is not implemented (the gem resolves refs on demand).
-- `allOf` flattening in the requirements summary & template generation is shallow (top-level only) and not a full merger of keywords like `additionalProperties`.
+- Bundled schema emission rewrites only direct file-based `$ref` targets; remote/network refs are left untouched.
+- Nested composition (`allOf` inside referenced definitions) is preserved rather than fully merged.
+- Requirements summary & template generation still perform only top-level `allOf` flattening (not deep merge of validation keywords like `additionalProperties`).
 
 ### Exit Codes
 
