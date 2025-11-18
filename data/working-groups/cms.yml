@@ -9,3 +9,7 @@ projects:
   - govstack-proj-1
 specifications:
   - govstack-bb-cms-spec
+members:
+  - govstack-person-1
+  - govstack-person-2
+  - govstack-person-3

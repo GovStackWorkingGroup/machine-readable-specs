@@ -30,8 +30,10 @@ class JsonSchemaValidatorCLI
     case cmd
     when 'list-schemas' then list_schemas
     when 'validate'     then cmd_validate(@argv)
+    when 'template'     then cmd_template(@argv)
+    when 'generate-templates' then cmd_generate_templates(@argv)
     else
-      warn "Unknown or missing command. Supported: list-schemas, validate"
+      warn "Unknown or missing command. Supported: list-schemas, validate, template, generate-templates"
       exit 1
     end
   end
@@ -227,6 +229,114 @@ class JsonSchemaValidatorCLI
       schema.delete('$schema')
     end
     schema
+  end
+
+  # ---------------- Template Generation ----------------
+
+  def cmd_template(argv)
+    options = { format: 'yaml', include_optional: false }
+    opt = OptionParser.new do |o|
+      o.on('--format FORMAT', %w[yaml json], 'Output format (yaml|json) default: yaml') { |v| options[:format] = v }
+      o.on('--include-optional', 'Include non-required properties') { options[:include_optional] = true }
+    end
+    opt.parse!(argv)
+
+    schema_name_or_path = argv.shift or abort 'Usage: template <schema-name|path> [--format yaml|json] [--include-optional]'
+    schema_path = schema_path_for(schema_name_or_path)
+    raw = ensure_meta_schema(JSON.parse(File.read(schema_path)))
+    merged = merge_all_of(raw)
+    tmpl = build_template(merged, include_optional: options[:include_optional])
+    if options[:format] == 'json'
+      puts JSON.pretty_generate(tmpl)
+    else
+      puts YAML.dump(tmpl)
+    end
+  end
+
+  def cmd_generate_templates(argv)
+    options = { out_dir: ROOT.join('templates').to_s, only: nil, include_optional: true }
+    opt = OptionParser.new do |o|
+      o.on('--out-dir DIR', 'Output directory (default: templates/)') { |v| options[:out_dir] = v }
+      o.on('--only FORMAT', %w[json yml], 'Generate only one format: json or yml') { |v| options[:only] = v }
+      o.on('--required-only', 'Generate templates with only required properties') { options[:include_optional] = false }
+    end
+    opt.parse!(argv)
+    FileUtils.mkdir_p(options[:out_dir])
+    count = 0
+    Dir.glob(SCHEMAS_DIR.join('*.json')).sort.each do |schema_path|
+      begin
+        raw = ensure_meta_schema(JSON.parse(File.read(schema_path)))
+        merged = merge_all_of(raw)
+        tmpl = build_template(merged, include_optional: options[:include_optional])
+        base = File.basename(schema_path, '.json')
+        if options[:only].nil? || options[:only] == 'json'
+          File.write(File.join(options[:out_dir], "#{base}.json"), JSON.pretty_generate(tmpl))
+        end
+        if options[:only].nil? || options[:only] == 'yml'
+          File.write(File.join(options[:out_dir], "#{base}.yml"), YAML.dump(tmpl))
+        end
+        count += 1
+      rescue => e
+        warn "WARN: template generation skipped for #{File.basename(schema_path)}: #{e.message}"
+      end
+    end
+    which = case options[:only]
+            when 'json' then 'JSON'
+            when 'yml' then 'YML'
+            else 'JSON and YML'
+            end
+    mode = options[:include_optional] ? 'all fields' : 'required only'
+    rel_out = begin
+      Pathname.new(options[:out_dir]).relative_path_from(ROOT)
+    rescue
+      options[:out_dir]
+    end
+    puts "Generated #{which} templates (#{mode}) for #{count} schema#{count == 1 ? '' : 's'} into #{rel_out}"
+  end
+
+  # Build a template hash from a merged schema (object root assumed)
+  def build_template(schema, include_optional: false)
+    return {} unless schema.is_a?(Hash)
+    if schema['type'] == 'object'
+      props = schema['properties'] || {}
+      required = Array(schema['required'])
+      keys = include_optional ? props.keys : required
+      result = {}
+      keys.each do |k|
+        sub = props[k]
+        result[k] = default_for(sub, include_optional: include_optional)
+      end
+      result
+    elsif schema['type'] == 'array'
+      []
+    else
+      default_for(schema, include_optional: include_optional)
+    end
+  end
+
+  def default_for(subschema, include_optional: false)
+    return nil unless subschema.is_a?(Hash)
+    return subschema['default'] if subschema.key?('default')
+    if subschema['enum']&.any?
+      return subschema['enum'].first
+    end
+    case subschema['type']
+    when 'string' then ''
+    when 'integer' then 0
+    when 'number' then 0
+    when 'boolean' then false
+    when 'array'
+      items = subschema['items']
+      if items
+        [default_for(items, include_optional: include_optional)].compact
+      else
+        []
+      end
+    when 'object'
+      build_template(subschema, include_optional: include_optional)
+    else
+      nil
+    end
   end
 end
 
