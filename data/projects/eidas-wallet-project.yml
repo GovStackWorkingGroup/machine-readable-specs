@@ -1,0 +1,14 @@
+---
+identifier: govstack-proj-1
+name: eIDAS Wallet Implementation guidance
+startDate: 2025-10-01
+owners:
+  - govstack-team-cfid
+description: >
+  This project aims to provide comprehensive implementation guidance for eIDAS (Electronic Identification, Authentication and trust Services) within the GovStack framework. The guidance will cover how to utilize the building blocks approach to set a Wallet solution for a government that is eIDAS compliant. This includes technical specifications, organizational and policy strategies to ensure secure and interoperable digital identity solutions that meet eIDAS requirements.
+lifecycleStatus: in-progress
+relatedSpecifications:
+  - govstack-bb-wallet-spec
+  - govstack-bb-id-spec
+  - govstack-bb-consent-spec
+  - govstack-bb-esignature-spec

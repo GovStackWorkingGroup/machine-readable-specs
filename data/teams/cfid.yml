@@ -1,0 +1,18 @@
+---
+identifier: govstack-team-cfid
+name: Cross Functional Identity Infrastructure
+description: >
+  The CFID Working Group defines and maintains technical specifications and guidance for secure, interoperable identity infrastructure in GovStack. These specifications include ID, Wallet, Consent and e-Signature.
+status: active
+projects:
+  - govstack-proj-1
+members:
+  - govstack-person-1
+  - govstack-wg-wallet
+  - govstack-wg-id
+  - govstack-wg-consent
+  - govstack-wg-esignature
+  - govstack-person-2
+  - govstack-person-3
+  - govstack-person-4
+  - govstack-person-5

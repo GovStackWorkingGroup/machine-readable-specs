@@ -1,0 +1,11 @@
+---
+identifier: govstack-wg-cms
+name: Content Management System
+description: >
+  The Content Management System (CMS) Working Group defines and maintains technical specifications and guidance for secure, interoperable content management systems in GovStack. These specifications enable use cases like content creation, publishing, and management — supporting global
+  digital public infrastructure.
+status: active
+projects:
+  - govstack-proj-1
+specifications:
+  - govstack-bb-cms-spec
