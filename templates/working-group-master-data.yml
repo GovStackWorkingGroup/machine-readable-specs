@@ -1,0 +1,46 @@
+---
+identifier: ''
+name: ''
+description: ''
+status: active
+members:
+  - identifier: ''
+    name: ''
+    email: ''
+    url: ''
+    affiliation:
+      name: ''
+      url: ''
+projects:
+  - identifier: ''
+    name: ''
+    description: ''
+    startDate: ''
+    endDate: ''
+    lifecycleStatus: proposed
+    healthStatus: on-track
+    owners:
+      - identifier: ''
+        name: ''
+        email: ''
+        url: ''
+        affiliation:
+          name: ''
+          url: ''
+publications:
+  - identifier: ''
+    name: ''
+    version: ''
+    publishedDate: ''
+    description: ''
+    status: draft
+    hosted_at: ''
+specifications:
+  - identifier: ''
+    name: ''
+    version: ''
+    publishedDate: ''
+    description: ''
+    status: draft
+    hosted_at: ''
+
