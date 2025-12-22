@@ -1,0 +1,7 @@
+namespace: urn:govstack:term
+term: Pseudonymity
+definition: >
+  Pseudonymity refers to the use of a pseudonym (a fictitious name or identifier) instead of one's real name or identity, particularly in digital and online contexts. This allows individuals to interact, communicate, or perform transactions without revealing their true identities, thereby protecting their privacy and reducing the risk of identity theft or tracking.
+  
+  Here, pseudonymity refers to the possibility of using a pseudonym when authenticating online or presenting credentials.
+definitionFormat: text/markdown

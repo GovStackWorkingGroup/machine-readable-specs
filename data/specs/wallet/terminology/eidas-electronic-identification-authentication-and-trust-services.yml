@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: eIDAS (Electronic Identification, Authentication, and Trust Services)
+definition: >
+  eIDAS is an EU regulation that sets standards for electronic identification and trust services for electronic transactions within the European Union’s single market. It aims to facilitate secure cross-border digital interactions for businesses, citizens, and public administrations. eIDAS provides a legal framework for the mutual recognition of electronic IDs (eIDs) and the use of trust services such as electronic signatures, electronic seals, timestamps, and website authentication to enable secure, reliable digital transactions.
+definitionFormat: text/markdown

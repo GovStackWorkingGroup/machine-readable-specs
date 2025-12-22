@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: PII (Personally Identifiable Information)
+definition: >
+  PII refers to any information that can be used to identify a specific individual, such as names, addresses, social security numbers, or biometric data.
+definitionFormat: text/markdown

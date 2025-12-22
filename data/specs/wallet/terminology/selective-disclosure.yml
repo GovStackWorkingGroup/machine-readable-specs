@@ -1,0 +1,7 @@
+namespace: urn:govstack:term
+term: Selective Disclosure
+definition: >
+  Selective disclosure refers to sharing only specific information or attributes from a larger set of data or credentials, rather than revealing the entire set. It allows individuals to control and limit the information they share based on the context or requirements of a particular interaction or transaction.&#x20;
+  
+  Selective disclosure enhances privacy and security by minimizing the exposure of sensitive data while still providing the necessary information to fulfill a given purpose or request.
+definitionFormat: text/markdown

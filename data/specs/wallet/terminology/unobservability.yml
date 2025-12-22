@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Unobservability
+definition: >
+  Unobservability refers to the property where an adversary cannot discern any useful information about a communication or transaction. This ensures that sensitive data, such as message content, sender or receiver identity, or any other relevant information, remains hidden from unauthorized parties. In this context, neither Wallet Providers nor Issuers shall be able to track where a user uses their credentials or learn details concerning the attributes provided.
+definitionFormat: text/markdown

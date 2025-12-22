@@ -1,0 +1,7 @@
+namespace: urn:govstack:term
+term: SD-JWT VC
+definition: >
+  SD-JWT-based Verifiable Credential is a verifiable credential encoded using the Issuance format defined in \[[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-05)]. It may or may not contain selectively disclosable claims.\
+  \
+  For details check, the draft [SD-JWT VC spec](https://datatracker.ietf.org/doc/html/draft-terbu-oauth-sd-jwt-vc).&#x20;
+definitionFormat: text/markdown

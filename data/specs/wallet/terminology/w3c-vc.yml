@@ -1,0 +1,9 @@
+namespace: urn:govstack:term
+term: W3C VC
+definition: >
+  W3C VC stands for "W3C Verifiable Credentials." Verifiable Credentials (VCs) are a standardized format for digitally representing credentials, such as academic degrees, professional certifications, or government-issued IDs, in a way that is cryptographically secure, privacy-preserving, and interoperable across different systems and platforms.&#x20;
+  
+  Developed by the World Wide Web Consortium (W3C), the standard defines the structure and semantics of verifiable credentials, as well as protocols and mechanisms for issuing, presenting, and verifying them. W3C VC aims to provide a foundation for trusted and decentralized digital identity systems, enabling individuals to own, control, and selectively disclose their credentials without relying on central authorities or intermediaries.\
+  \
+  For details visit check [W3C VC Data Model](https://www.w3.org/TR/vc-data-model/).
+definitionFormat: text/markdown

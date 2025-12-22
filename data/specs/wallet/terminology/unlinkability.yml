@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Unlinkability
+definition: >
+  Unlinkability refers to the property that enables not to distinguish whether two transactions are related to the same user or not.
+definitionFormat: text/markdown

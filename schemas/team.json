@@ -7,6 +7,7 @@
     "identifier": { "type": "string", "description": "Unique identifier for the team" },
     "name": { "type": "string", "description": "Team name" },
     "description": { "type": "string", "description": "Team description" },
+    "slug": { "type": "string", "description": "URL-friendly slug for the team that also serves as a human-friendly name and follows govstack convention" },
     "status": {
       "type": "string",
       "enum": ["active", "inactive", "closed"],

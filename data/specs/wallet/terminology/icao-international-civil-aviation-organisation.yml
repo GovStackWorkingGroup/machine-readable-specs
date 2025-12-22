@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: ICAO (International Civil Aviation Organisation)
+definition: >
+  ICAO is a specialized agency of the United Nations that sets international standards for aviation, including standards for machine-readable travel documents like passports.
+definitionFormat: text/markdown

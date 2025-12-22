@@ -1,0 +1,12 @@
+namespace: urn:govstack:term
+term: Content List
+definition: >
+  The Content List refers to the collection of Verifiable Credentials (VCs) and associated artifacts that are stored in or linked to the wallet [container](3-terminology.md#container). This includes both locally stored credentials and remotely referenced credentials (e.g., held in cloud wallets or [digital lockers](3-terminology.md#digital-locker)).
+  
+  Examples in a Content List:
+  
+  * Identity credentials (e.g., digital ID, driver’s license)
+  * Education credentials (e.g., diploma, transcript)
+  * Health credentials (e.g., vaccination record)
+  * Employment or financial records (e.g., payslips, tax certificates)
+definitionFormat: text/markdown

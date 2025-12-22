@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Self-Sovereign Identity (SSI)
+definition: >
+  Self-Sovereign Identity (SSI) is a decentralized identity model where individuals fully own, manage, and control their digital identity without relying on centralized institutions or third parties. SSI allows users to store their personal information (credentials) in a secure digital wallet and selectively share it with service providers. It leverages blockchain or distributed ledger technology to ensure trust, privacy, and security in verifying the authenticity of identity information.
+definitionFormat: text/markdown

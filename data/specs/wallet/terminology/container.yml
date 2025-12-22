@@ -1,0 +1,12 @@
+namespace: urn:govstack:term
+term: Container
+definition: >
+  A Container refers to the technical medium or environment in which Verifiable Credentials (VCs) are securely stored, managed, and accessed by the holder. It ensures data protection, interoperability, access control, and portability of credentials.
+  
+  Examples of Containers:
+  
+  * Mobile wallet apps (Android/iOS)
+  * Web-based wallets (browser-accessible)
+  * Cloud-based credential stores
+  * Hardware-based secure elements (e.g., smartcards)
+definitionFormat: text/markdown

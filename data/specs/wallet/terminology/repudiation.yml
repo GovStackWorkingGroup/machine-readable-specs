@@ -1,0 +1,9 @@
+namespace: urn:govstack:term
+term: Repudiation
+definition: >
+  Repudiation (or "plausible deniability") refers to the property that allows an entity involved in an identification transaction to plausibly deny to a third party (i.e., a party not involved in the transaction) its participation in the transaction after its completion or the provision of certain data. Although "repudiation" typically denotes a single act of dispute, it is commonly used to describe the general ability to deny transactions. Importantly, this ability to deny the transaction to third parties does not affect the reliability of the transaction for the Verifier involved.
+  
+  {% hint style="info" %}
+  _This definition is borrowed from the_ [_Architecture Proposal for the German eIDAS Implementation_](https://bmi.usercontent.opencode.de/eudi-wallet/eidas-2.0-architekturkonzept/#architecture-proposal-for-the-german-eidas-implementation)_._&#x20;
+  {% endhint %}
+definitionFormat: text/markdown

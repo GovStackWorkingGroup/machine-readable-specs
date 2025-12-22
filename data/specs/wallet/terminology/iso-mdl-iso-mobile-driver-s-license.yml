@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: ISO mDL (ISO Mobile Driver's License)
+definition: >
+  ISO mDL refers to a digital representation of a driver's license that conforms to international standards set by the International Organisation for Standardisation (ISO). The ISO mDL standard (ISO/IEC 18013-5) outlines specifications for the format, structure, security, and interoperability of mobile driver's licenses.
+definitionFormat: text/markdown

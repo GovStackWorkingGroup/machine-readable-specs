@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: OpenID Connect
+definition: >
+  OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. It provides a way for clients to authenticate users and obtain information about them.
+definitionFormat: text/markdown

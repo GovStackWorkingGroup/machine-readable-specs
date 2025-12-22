@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Holder Binding
+definition: >
+  User binding refers to the property that enables verifiers to trust that the individual presenting a credential is the same individual to whom the credential was originally issued.
+definitionFormat: text/markdown

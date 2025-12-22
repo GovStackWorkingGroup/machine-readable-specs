@@ -1,0 +1,7 @@
+namespace: urn:govstack:term
+term: Low Tech Wallets
+definition: >
+  A low-tech wallet refers to a physical storage device or medium that lacks sophisticated digital interfaces and advanced connectivity features. These wallets typically rely on simple mechanisms such as USB connections, embedded chips, or SIM cards for accessing and managing digital credentials.
+  
+  Unlike high-tech digital wallets that may incorporate biometric authentication, NFC (Near Field Communication) capabilities or cloud-based storage, low-tech wallets offer a more straightforward and often offline approach to storing digital credentials. They prioritize simplicity and physical security over advanced digital features, providing users with a tangible means of securely storing and accessing their digital credentials without extensive reliance on complex technology.
+definitionFormat: text/markdown

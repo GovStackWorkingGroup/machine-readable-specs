@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: QR Code
+definition: >
+  A QR code is a two-dimensional barcode that can store various types of information, such as website URLs, contact information, or other data. It is often used for easy and quick data exchange using a camera-equipped device.
+definitionFormat: text/markdown

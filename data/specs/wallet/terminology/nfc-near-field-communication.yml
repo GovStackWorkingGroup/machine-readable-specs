@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: NFC (Near Field Communication)
+definition: >
+  NFC is a short-range wireless communication technology that enables devices to exchange data when placed close to each other. It is commonly used for contactless payments and data transfer.
+definitionFormat: text/markdown

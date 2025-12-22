@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Digital Vault
+definition: >
+  A digital vault is a secure storage system for safeguarding digital credentials, such as usernames, passwords, cryptographic keys, and other sensitive authentication information. It employs encryption and access controls to protect credentials from unauthorized access, theft, or misuse.
+definitionFormat: text/markdown

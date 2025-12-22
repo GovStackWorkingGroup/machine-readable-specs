@@ -9,6 +9,7 @@ Supported operations:
 - Print a requirements summary only (without validating) via `--summary-only`
 - Bundle a schema (inline / collect its referenced schemas into `$defs`)
 - Bulk bundle all schemas
+- Generate a Graphviz DOT dependency graph of schemas
 
 Template generation is now supported directly by the validator script.
 
@@ -61,6 +62,12 @@ bundle exec ruby scripts/schema_validator.rb bundle specification --out tmp/bund
 
 # Bulk bundle all schemas into schemas/bundled/
 bundle exec ruby scripts/schema_validator.rb generate-bundles
+
+# Generate a Graphviz DOT of schema dependencies
+bundle exec ruby scripts/schema_validator.rb graph --out tmp/schemas.dot
+
+# Render with graphviz (optional)
+# dot -Tpng tmp/schemas.dot -o tmp/schemas.png
 ```
 
 Example output (success):
@@ -122,6 +129,7 @@ Place the file in `./schemas/<name>.json` and set a unique `$id` (recommended: `
 ### Troubleshooting
 
 - Missing `$ref` resolution: ensure referenced schema filename matches basename of `$ref` path.
+- Graph missing edges: only `$ref` values that include `/schemas/` are considered inter-schema edges; internal `#/$defs/...` refs are intentionally ignored.
 - Unexpected pass: remember meta-schema validation is skipped (strip `$schema`).
 - Performance issues with large arrays: consider adding `minItems` / `maxItems` to constrain validation time.
 

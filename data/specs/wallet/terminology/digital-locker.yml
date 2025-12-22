@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Digital Locker
+definition: >
+  In the context of digital credentials, a digital locker refers to a secure online repository for storing and managing digital copies of official documents, certificates, and records related to a user's identity, qualifications, or credentials. It allows individuals to securely store and share digital credentials while ensuring data privacy and integrity.
+definitionFormat: text/markdown

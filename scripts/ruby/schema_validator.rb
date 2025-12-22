@@ -35,8 +35,9 @@ class JsonSchemaValidatorCLI
     when 'generate-templates' then cmd_generate_templates(@argv)
     when 'bundle'       then cmd_bundle(@argv)
     when 'generate-bundles' then cmd_generate_bundles(@argv)
+    when 'graph'        then cmd_graph(@argv)
     else
-      warn "Unknown or missing command. Supported: list-schemas, validate, template, generate-templates, bundle, generate-bundles"
+      warn "Unknown or missing command. Supported: list-schemas, validate, template, generate-templates, bundle, generate-bundles, graph"
       exit 1
     end
   end
@@ -360,6 +361,99 @@ class JsonSchemaValidatorCLI
       obj.map { |e| deep_clone(e) }
     else
       obj
+    end
+  end
+
+  # ---------------- Graph (Graphviz DOT) ----------------
+  # Build a dependency graph of schemas based on $ref usage.
+  # Usage: graph [--out FILE] [--rankdir LR|TB] [--labels title|name]
+  def cmd_graph(argv)
+    options = { out: nil, rankdir: 'LR', labels: 'name' }
+    opt = OptionParser.new do |o|
+      o.on('--out FILE', 'Write DOT graph to FILE (default: stdout)') { |v| options[:out] = v }
+      o.on('--rankdir DIR', %w[LR RL TB BT], 'Graph layout direction (default: LR)') { |v| options[:rankdir] = v }
+      o.on('--labels WHICH', %w[title name id], 'Node label: title|name|id (default: name = filename)') { |v| options[:labels] = v }
+    end
+    opt.parse!(argv)
+
+    schemas = {}
+    Dir.glob(SCHEMAS_DIR.join('*.json')).sort.each do |schema_path|
+      begin
+        schema = ensure_meta_schema(JSON.parse(File.read(schema_path)))
+        base = File.basename(schema_path, '.json')
+        schemas[base] = schema
+      rescue => e
+        warn "WARN: skipping #{File.basename(schema_path)}: #{e.message}"
+      end
+    end
+
+    nodes = schemas.keys
+    edges = []
+    schemas.each do |base, schema|
+      refs = collect_external_refs(schema)
+      refs.each do |target|
+        edges << [base, target] if nodes.include?(target)
+      end
+    end
+    edges.uniq!
+
+    dot = []
+    dot << "digraph Schemas {"
+    dot << "  rankdir=#{options[:rankdir]};"
+    dot << "  node [shape=box, style=rounded, fontsize=10];"
+
+    # Node labels
+    nodes.sort.each do |n|
+      label = case options[:labels]
+              when 'title' then (schemas[n]['title'] || n)
+              when 'id' then (schemas[n]['$id'] || n)
+              else n
+              end
+      dot << "  \"#{n}\" [label=\"#{label.gsub('"','\\"')}\"];"
+    end
+    # Edges
+    edges.sort.each do |(a,b)|
+      dot << "  \"#{a}\" -> \"#{b}\";"
+    end
+    dot << "}"
+
+    output = dot.join("\n")
+    if options[:out]
+      FileUtils.mkdir_p(File.dirname(options[:out]))
+      File.write(options[:out], output)
+      puts "Wrote graph DOT to #{options[:out]} (#{nodes.size} nodes, #{edges.size} edges)"
+    else
+      puts output
+    end
+  end
+
+  def collect_external_refs(node, acc = [])
+    case node
+    when Hash
+      if node.key?('$ref')
+        base = ref_to_local_basename(node['$ref'])
+        acc << base if base
+      end
+      node.each do |k,v|
+        next if k == '$ref'
+        collect_external_refs(v, acc)
+      end
+    when Array
+      node.each { |el| collect_external_refs(el, acc) }
+    end
+    acc
+  end
+
+  def ref_to_local_basename(ref)
+    begin
+      u = Addressable::URI.parse(ref)
+      path = u.path
+      return nil unless path && path.include?('/schemas/')
+      base = File.basename(path)
+      base = base.sub(/\.json$/, '')
+      return base
+    rescue
+      nil
     end
   end
 

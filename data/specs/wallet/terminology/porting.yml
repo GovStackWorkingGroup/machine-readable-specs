@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Porting
+definition: >
+  Porting of credentials from one wallet to another refers to the process of transferring stored credentials, such as payment cards, identification documents, or other types of personal information, from one digital wallet application or service to another.
+definitionFormat: text/markdown

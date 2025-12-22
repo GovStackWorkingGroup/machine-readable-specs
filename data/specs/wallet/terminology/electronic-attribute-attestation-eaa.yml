@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Electronic Attribute Attestation (EAA)
+definition: >
+  Electronic Attribute Attestation refers to the digital confirmation of specific attributes (such as age, professional status, qualifications, etc.) of an individual or entity by an authoritative source. It is part of the broader identity verification process where a trusted third party verifies and attests to the attributes digitally. The attestation can be used in electronic transactions to verify relevant attributes without revealing unnecessary personal information, improving privacy and security. These attestations can be stored in digital wallets and shared with service providers in a controlled manner, similar to [SSI](3-terminology.md#self-sovereign-identity-ssi) models.
+definitionFormat: text/markdown

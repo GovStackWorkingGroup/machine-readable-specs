@@ -1,0 +1,65 @@
+---
+uri: https://wallet.govstack.global/spec/1
+name: BB Wallet Specification
+description: >
+  This version provides an initial abstraction for Digital Credentials Wallets, offering digital credential issuance, presentation, and selective disclosure. The abstraction of Container, Contents and Verifiable Credentials as described on section 2 of the specification is meant allow this document to evolve into supporting more specific use-cases and differing applications on iterating versions.
+status: release
+version: 1.0.0
+workingGroup: group/wallet
+authors:
+  - identifier: person/jaume_dubois
+    name: Jaume Dubois
+    affiliation: {name: ID30, url: https://id30.org}
+  - identifier: person/torsten_lodderstedt
+    name: Torsten Lodderstedt
+    affiliation: {name: OpenWallet Foundation, url: https://openwallet.foundation/}
+  - identifier: person/torsten_lodderstedt
+    name: Torsten Lodderstedt
+    affiliation: {name: OpenWallet Foundation, url: https://openwallet.foundation/}
+  - identifier: person/vishwanath_v
+    name: Vishwanath V
+    affiliation: {name: MOSIP, url: https://mosip.io}
+  - identifier: person/david_higgins
+    name: David Higgins
+    affiliation: {name: Mifos Initiative, url: https://mifos.org}
+  - identifier: person/abbie_barbir
+    name: Abbie Barbir
+    affiliation: {name: ITU, url: https://itu.int}
+  - identifier: person/mary_metias
+    name: Mary Metias
+    affiliation: {name: Government of Egypt, url: https://egypt.gov.eg}
+  - identifier: person/ps_ramkumar
+    name: P S Ramkumar
+    affiliation: {name: ITU, url: https://itu.int}
+  - identifier: person/lal_chandran
+    name: Lal Chandran
+    affiliation: {name: iGrant.io, url: https://igrant.io}
+  - identifier: person/george_padayatti
+    name: George J Padayatti
+    affiliation: {name: iGrant.io, url: https://igrant.io}
+  - identifier: person/lotta_lundin
+    name: Lotta Lundin
+    affiliation: {name: iGrant.io, url: https://igrant.io}
+  - identifier: person/rounak_nayak
+    name: Rounak Nayak
+    affiliation: {name: ITU, url: https://itu.int}
+reviewers:
+  - identifier: person/swati_goel
+    name: Swati Goel
+  - identifier: person/gurpreet_kaur
+    name: Gurpreet Kaur
+  - identifier: person/sivanand_lanka
+    name: Sivanand Lanka
+  - identifier: person/kim_hamilton
+    name: Kim Hamilton Duffy
+editor:
+  - identifier: person/ali_gonzalez-garcia
+    name: Ali Gonzalez-Garcia
+    affiliation: {name: GovStack, url: https://govstack.global}
+publishedDate: 2025-09-01
+releaseNotes: {"type": "file", "path": "RELEASE_NOTES.md"}
+contents: {"type": "file", "path": "SUMMARY.md"}
+terminology: {"type": "file", "path": "definitions.json"}
+functionalities: {"type": "file", "path": "functionalities.json"}
+cross-functional-requirements: NOT IMPLEMENTED
+api-specification: {"type": "file", "path": "api.yml"}

@@ -1,0 +1,7 @@
+namespace: urn:govstack:term
+term: BLE (Bluetooth Low Energy)
+definition: >
+  
+  
+  BLE is a wireless communication technology designed for short-range communication between devices. It is commonly used for connecting devices like smartphones and wearables.
+definitionFormat: text/markdown

@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: Verifiable Presentations (VPs)
+definition: >
+  Verifiable presentations involve the secure and privacy-preserving presentation of verifiable credentials to third parties for verification.
+definitionFormat: text/markdown

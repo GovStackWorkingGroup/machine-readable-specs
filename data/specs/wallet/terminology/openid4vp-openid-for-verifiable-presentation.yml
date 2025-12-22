@@ -1,0 +1,5 @@
+namespace: urn:govstack:term
+term: OpenID4VP (OpenID for Verifiable Presentation)
+definition: >
+  Defines a mechanism on top of OAuth 2.0 to allow the presentation of claims in the form of Verifiable Credentials as part of the protocol flow.
+definitionFormat: text/markdown
