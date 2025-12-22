@@ -2,7 +2,7 @@
 
 This project provides tooling for the publication of machine readable GovStack specifications. 
 
-[Jump here](#ontology) for a practical example
+[Jump here](#application) for a practical example
 
 It is composed of:
 
