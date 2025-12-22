@@ -23,13 +23,13 @@
           "identifier": "https://wallet.govstack.global/spec/1/kdf/1/req/1",
           "level": "RECOMMENDED",
           "description": "The credential wallet should host the credential offering endpoint that the credential issuer should call to share the <a href=\"/terminology#credential-offer\">credential offer</a>\n",
-          "operationId": "NOT IMPLEMENTED"
+          "operationId": "credential-offer"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/1/req/2",
           "level": "REQUIRED",
           "description": "The credential issuer MUST expose an endpoint that provides relevant information to ensure a convenient and secure credential issuance.\n",
-          "operationId": "NOT IMPLEMENTED"
+          "operationId": "get-issuer-well-known"
         }
       ]
     },
