@@ -1,5 +1,7 @@
 ---
-uri: https://wallet.govstack.global/spec/1
+namespace: urn:govstack:spec
+identifier: urn:govstack:spec:not_implemented
+uri: https://wallet.govstack.global/spec/release/1.0-stable
 name: BB Wallet Specification
 description: >
   This version provides an initial abstraction for Digital Credentials Wallets, offering digital credential issuance, presentation, and selective disclosure. The abstraction of Container, Contents and Verifiable Credentials as described on section 2 of the specification is meant allow this document to evolve into supporting more specific use-cases and differing applications on iterating versions.
@@ -52,14 +54,15 @@ reviewers:
     name: Sivanand Lanka
   - identifier: person/kim_hamilton
     name: Kim Hamilton Duffy
-editor:
+editors:
   - identifier: person/ali_gonzalez-garcia
     name: Ali Gonzalez-Garcia
     affiliation: {name: GovStack, url: https://govstack.global}
 publishedDate: 2025-09-01
-releaseNotes: {"type": "file", "path": "RELEASE_NOTES.md"}
-contents: {"type": "file", "path": "SUMMARY.md"}
-terminology: {"type": "file", "path": "definitions.json"}
-functionalities: {"type": "file", "path": "functionalities.json"}
+releaseNotes: {"type": "file", "path": "contents/1-version-history/release-notes.md"}
+license: {"type": "file", "path": "LICENSE.txt"}
+contents: {"type": "file", "path": "contents/SUMMARY.md"}
+terminology: {"type": "application/json", "path": "definitions.json"}
+functionalities: {"type": "application/json", "path": "functionalities.json"}
 cross-functional-requirements: NOT IMPLEMENTED
-api-specification: {"type": "file", "path": "api.yml"}
+api-specification: {"type": "application/yaml", "path": "api.yml"}

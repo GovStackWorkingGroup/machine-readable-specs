@@ -3,22 +3,74 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Specification",
   "type": "object",
-  "allOf": [
-    { "$ref": "https://example.com/schemas/publication" },
-    {
-      "type": "object",
-      "required": ["workingGroup"],
-      "properties": {
-        "status": { "enum": ["draft", "snapshot", "candidate","release", "deprecated"], "description": "Publication status on the specification track cycle (e.g., draft, published, deprecated)" },
-        "version": {"type": "string", "description": "Version identifier of the specification using semver (e.g., '1.0.0', '2.1.0, 1.2.0-rc')"},
-        "hosted_at": { "type": "string", "format": "uri", "description": "Canonical URL where the specification is hosted" },
-        "workingGroup": {
-          "description": "Associated working group for the publication (object or string ID)",
-          "if": { "type": "object" },
-          "then": { "$ref": "https://example.com/schemas/working-group" },
-          "else": { "type": "string", "description": "Reference to a working group identifier" }
+  "description": "Syntax validation for a Specification object. Relationships are expressed via JSON‑LD.",
+  "required": [
+    "namespace",
+    "name",
+    "status",
+    "version",
+    "workingGroup",
+    "publishedDate",
+    "releaseNotes",
+    "license",
+    "contents"
+  ],
+  "properties": {
+    "namespace": { "type": "string", "description": "URN, schema, or JSON‑LD namespace describing identifier rules and semantics." },
+    "identifier": { "type": "string", "description": "Identifier compliant with the given namespace (may be provisional)." },
+    "uri": { "type": "string", "format": "uri", "description": "Canonical or provisional URI for this specification object." },
+    "name": { "type": "string", "description": "Human‑readable name of the specification." },
+    "description": { "type": "string", "description": "Long description of the specification." },
+    "status": { "type": "string", "enum": ["draft", "snapshot", "candidate", "release", "deprecated"], "description": "Lifecycle status on the publication track." },
+    "version": { "type": "string", "description": "Semantic version string (e.g., 1.0.0, 1.2.0‑rc)." },
+    "workingGroup": { "type": "string", "description": "Identifier of the associated Working Group (e.g., group/wallet)." },
+    "authors": { "type": "array", "items": { "$ref": "#/definitions/personRef" }, "description": "Authors of the specification (person references)." },
+    "reviewers": { "type": "array", "items": { "$ref": "#/definitions/personRef" }, "description": "Reviewers of the specification (person references)." },
+    "editors": { "type": "array", "items": { "$ref": "#/definitions/personRef" }, "description": "Editors of the specification (person references)." },
+    "publishedDate": { "type": "string", "format": "date", "description": "Publication date (YYYY‑MM‑DD)." },
+    "releaseNotes": { "$ref": "#/definitions/fileRef", "description": "File pointer to release notes for this version." },
+    "license": { "$ref": "#/definitions/fileRef", "description": "File pointer to license information." },
+    "contents": { "$ref": "#/definitions/fileRef", "description": "Entry‑point file for the human‑readable spec (e.g., SUMMARY.md)." },
+    "terminology": { "$ref": "#/definitions/fileRef", "description": "JSON file with term definitions." },
+    "functionalities": { "$ref": "#/definitions/fileRef", "description": "JSON file listing KDF functionalities." },
+    "cross-functional-requirements": { "type": ["string", "object", "null"], "description": "Placeholder for cross‑functional requirements (not implemented)." },
+    "api-specification": { "$ref": "#/definitions/fileRef", "description": "OpenAPI specification (YAML or JSON)." }
+  },
+  "definitions": {
+    "personRef": {
+      "description": "A person reference: either a string identifier or a minimal person object.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "identifier": { "type": "string" },
+            "name": { "type": "string" },
+            "affiliation": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "url": { "type": "string", "format": "uri" }
+              },
+              "required": ["name"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["identifier"],
+          "additionalProperties": true
         }
-      }
+      ]
+    },
+    "fileRef": {
+      "description": "Pointer to a file or resource in the spec tree.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "path": { "type": "string" }
+      },
+      "required": ["path"],
+      "additionalProperties": true
     }
-  ]
+  },
+  "additionalProperties": false
 }
