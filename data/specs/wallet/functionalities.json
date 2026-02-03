@@ -22,12 +22,14 @@
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/1/req/1",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.1.-credential-discovery",
           "level": "RECOMMENDED",
           "description": "The credential wallet should host the credential offering endpoint that the credential issuer should call to share the <a href=\"/terminology#credential-offer\">credential offer</a>\n",
           "operationId": "credential-offer"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/1/req/2",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.1.-credential-discovery",
           "level": "REQUIRED",
           "description": "The credential issuer MUST expose an endpoint that provides relevant information to ensure a convenient and secure credential issuance.\n",
           "operationId": "get-issuer-well-known"
@@ -43,42 +45,49 @@
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/1",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "RECOMMENDED",
           "description": "The credential issuer SHOULD be able to validate the wallet before issuing the credentials\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/2",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential issuer MUST authenticate the holder before issuing the credentials\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/3",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential wallet MUST be able to trust the credential issuer before requesting the credentials\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/4",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential wallet MUST be able to request credentials from a trusted credential issuer\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/5",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential wallet MUST be able to validate the credential before storing the credentials\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/6",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential wallet MUST enable cryptographic mechanisms to store the credentials\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/7",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
           "description": "The credential wallet MUST have trusted hardware providing a secure environment (tamper-proof) and storage for cryptographic assets such as keys\n",
           "operationId": "NOT IMPLEMENTED"
@@ -94,6 +103,7 @@
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/3/req/1",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.3.-credential-statuses",
           "level": "RECOMMENDED",
           "description": "The credential issuer SHOULD NOT be able to learn details of the presentation when there is a status check of the credentials by a verifier\n",
           "operationId": "NOT IMPLEMENTED"
@@ -109,6 +119,7 @@
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/4/req/1",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.4.-credential-validity",
           "level": "RECOMMENDED",
           "description": "The wallet SHOULD verify the validity of the credential when accessed and show the status to the holder to take appropriate action\n",
           "operationId": "NOT IMPLEMENTED"
@@ -124,90 +135,105 @@
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/1",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
           "description": "The credential verifier MUST be able to trust the credential wallet before requesting the presentations\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/2",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
           "description": "The credential verifier MUST be able to request a verifiable presentation\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/3",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
           "description": "The credential wallet MUST be able to validate the verifier before presenting a credential\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/4",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential wallet SHOULD capture the holder's consent before the credentials are presented to any verifier.\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/5",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential issuer SHOULD NOT be involved in the presentation process\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/6",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential wallet (with the holder's consent) SHOULD be able to present a selected subset of the data fields (claims) from a credential while other fields are not revealed to the verifier.\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/7",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
           "description": "The credential verifier MUST be able to receive the verifiable presentation from the wallet\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/8",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential verifier SHOULD be able to verify the presentations after receiving the presentation \n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/9",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential wallet SHOULD enable the holder to present a pseudonym instead of their real identity when authenticating online or presenting credentials, except in cases where identification is mandatory.\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/10",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential verifier SHOULD NOT be able to link two presentations to the same holder (unless the holder's information is provided as part of the presentation)\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/11",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "Two credential verifiers SHOULD NOT be able to link two presentation transactions to the same holder by sharing the received presentations\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/12",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "After receiving a presentation the credential verifier SHOULD NOT be able to prove to any third party that the holder had presented the credentials to the verifier for identification purposes earlier.  \nThis requirement can be fulfilled only if the presentation is not signed but secured using the HMAC (Hash-based Message Authentication Code).\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/13",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential wallet backend SHOULD NOT be able to track where the credentials are being presented or learn details about the attributes of any transactions performed by the Holder\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/14",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential verifier SHOULD NOT be able to prove to any third party the credential's authenticity and the integrity of its attributes that the verifier had previously verified.  \nThis requirement would require using ECDH/HMAC to cryptographically protect the credential, as this process involves a public key provided by the Verifier. This requires an active, trusted component to create the credential on demand,\n",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/15",
+          "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential issuer and the credential verifier should not be able to link an issuance and presentation session to the same holder (unless the Holder provides sufficiently identifying information as part of their authentication to the Issuer and as part of the presented credential shared with the verifier)\n",
           "operationId": "NOT IMPLEMENTED"
