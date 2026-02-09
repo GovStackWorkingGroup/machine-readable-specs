@@ -2,7 +2,9 @@
 namespace: urn:govstack:spec
 identifier: urn:govstack:spec:not_implemented
 uri: https://wallet.govstack.global/spec/release/1.0-stable
-name: BB Wallet Specification
+bbName: Wallet
+bbKey: bb-wallet
+name: Wallet Building Block Specification
 description: >
   This version provides an initial abstraction for Digital Credentials Wallets, offering digital credential issuance, presentation, and selective disclosure. The abstraction of Container, Contents and Verifiable Credentials as described on section 2 of the specification is meant allow this document to evolve into supporting more specific use-cases and differing applications on iterating versions.
 status: release
