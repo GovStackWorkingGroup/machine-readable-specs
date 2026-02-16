@@ -1,0 +1,21 @@
+{
+  "cross-cutting-functionalities": [
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/1",
+      "link": "https://wallet.govstack.global/1.0.0/5-cross-cutting-requirements#id-5.1.1.-unobservability",
+      "title": "Unobservability",
+      "content": "Unobservability means that neither wallet providers nor issuers shall be able to track where a holder uses his/her credentials or learns details concerning the attributes provided.",
+      "requirements": [
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/1/r1",
+          "link": "https://wallet.govstack.global/1.0.0/5-cross-cutting-requirements#id-5.1.1.-unobservability",
+          "title": "Unobservability Requirement 1",
+          "content": "The issuer should not be able to learn details (to whom the presentation was made when the presentation was made, etc.) of the presentation",
+          "level": "RECOMMENDED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        }
+      ]
+    }
+  ]
+}
