@@ -121,6 +121,120 @@
           "verificability": "NOT IMPLEMENTED"
         }
       ]
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/5",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.1.-holder-binding",
+      "title": "Holder Binding",
+      "content": "The ability of the holder to prove legitimate possession of a verifiable credential. There can be multiple types of holder binding. Here, we have defined three types of holder binding.",
+      "requirements": []
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/6",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.1.1.-cryptographic-holder-binding",
+      "title": "Cryptographic Holder Binding",
+      "content": "In cryptographic holder binding, issued credentials are cryptographically bound to the identifier of the Holder who possesses the credentials. Cryptographic binding allows the verifier to verify during the presentation of a credential that the holder presenting the credential is the same holder to whom that credential was issued in the first place.",
+      "requirements": []
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/7",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.1.2.-claim-based-holder-binding",
+      "title": "Claim-based Holder Binding",
+      "content": "In claims-based binding, no cryptographic binding identifier is provided. Instead, the issued credential includes the Holder's claims that can be used by the Verifier to verify possession of the credential by requesting the presentation of existing forms of physical or digital identification that include the same claims.",
+      "requirements": []
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/8",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.1.3.-biometrics-based-holder-binding",
+      "title": "Biometrics-based Holder Binding",
+      "content": "In biometrics-based binding, the Verifier should be able to authenticate the Holder using a certain biometric trait (such as fingerprint or face) based on biometric data in the verifiable credentials.",
+      "requirements": []
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/9",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.2.-secure-storage",
+      "title": "Secure Storage",
+      "content": null,
+      "requirements": [
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/9/r1",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.2.-secure-storage",
+          "title": null,
+          "content": "The wallet must provide a secure environment to store sensitive credential information by implementing secure cryptographic techniques.",
+          "level": "REQUIRED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        },
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/9/r2",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.2.-secure-storage",
+          "title": null,
+          "content": "The wallet must provide a secure environment to store the keys used for encrypting the credential data",
+          "level": "REQUIRED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        },
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/9/r3",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.2.-secure-storage",
+          "title": null,
+          "content": "The wallet must provide a secure environment to store the keys used for cryptographically binding the holder with the credentials",
+          "level": "REQUIRED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        }
+      ]
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/10",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.3.-trust-infrastructure",
+      "title": "Trust Infrastructure",
+      "content": "In a digital credentialing ecosystem, the trust infrastructure is vital for ensuring trust and transparency within the trust triangle (Issuer-Holder-Verifier).",
+      "requirements": [
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/10/r1",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.3.-trust-infrastructure",
+          "title": null,
+          "content": "The issuer SHOULD be able to verify that the credential is shared with a trusted Wallet",
+          "level": "RECOMMENDED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        },
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/10/r2",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.3.-trust-infrastructure",
+          "title": null,
+          "content": "The wallet MUST verify that a trusted Issuer issued the credentials",
+          "level": "REQUIRED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        },
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/10/r3",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.3.-trust-infrastructure",
+          "title": null,
+          "content": "The wallet SHOULD be able to verify that the presentation is shared with a trusted verifier",
+          "level": "RECOMMENDED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        },
+        {
+          "identifier": "https://wallet.govstack.global/spec/1/cfr/10/r4",
+          "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.3.-trust-infrastructure",
+          "title": null,
+          "content": "The verifier MUST verify that a trusted Issuer issued the credentials",
+          "level": "REQUIRED",
+          "mutability": "NOT IMPLEMENTED",
+          "verificability": "NOT IMPLEMENTED"
+        }
+      ]
+    },
+    {
+      "identifier": "https://wallet.govstack.global/spec/1/cfr/11",
+      "link": "https://wallet.govstack.global/5-cross-cutting-requirements#id-5.2.4.-handle-replay-attacks",
+      "title": "Handle Replay Attacks",
+      "content": "For every verification request, the wallet should generate a new presentation. The presentation should be bound to the presentation request and the verifier to prevent the replay of presentations.",
+      "requirements": []
     }
   ]
 }
