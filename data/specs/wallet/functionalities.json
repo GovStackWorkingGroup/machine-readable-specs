@@ -1,23 +1,9 @@
 {
-  "order": [
-    "https://wallet.govstack.global/spec/1/kdf/1",
-    "https://wallet.govstack.global/spec/1/kdf/2",
-    "https://wallet.govstack.global/spec/1/kdf/3",
-    "https://wallet.govstack.global/spec/1/kdf/4",
-    "https://wallet.govstack.global/spec/1/kdf/5",
-    "https://wallet.govstack.global/spec/1/kdf/6",
-    "https://wallet.govstack.global/spec/1/kdf/7",
-    "https://wallet.govstack.global/spec/1/kdf/8",
-    "https://wallet.govstack.global/spec/1/kdf/9",
-    "https://wallet.govstack.global/spec/1/kdf/10",
-    "https://wallet.govstack.global/spec/1/kdf/11"
-  ],
   "functionalities": [
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/1",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.1.-credential-discovery",
       "title": "Credential Discovery",
-      "level": "REQUIRED",
       "content": "A wallet holder who intends to receive credentials from an issuer should be able to get relevant information on how to obtain the credentials, so that, the process of credential issuance is convenient and secure.",
       "requirements": [
         {
@@ -40,8 +26,7 @@
       "identifier": "https://wallet.govstack.global/spec/1/kdf/2",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.2.-credential-issuance",
       "title": "Credential Issuance",
-      "level": "REQUIRED",
-      "content": "The status of a credential is dynamic and is governed by the issuer or the owner of the credential.\n\n- The Issuer should be able to change the status of the credentials to revoked or suspended\n- The Issuer should provide a privacy-preserving way to check the status so that the Verifier can check if the credential is suspended or revoked\n",
+      "content": "The status of a credential is dynamic and is governed by the issuer or the owner of the credential.\n\n- The Issuer should be able to change the status of the credentials to revoked or suspended\n- The Issuer should provide a privacy-preserving way to check the status so that the Verifier can check if the credential is suspended or revoked.",
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/1",
@@ -61,7 +46,7 @@
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/3",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
-          "description": "The credential wallet MUST be able to trust the credential issuer before requesting the credentials\n",
+          "description": "The credential wallet MUST be able to trust the credential issuer before requesting the credentials",
           "operationId": "NOT IMPLEMENTED"
         },
         {
@@ -75,21 +60,21 @@
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/5",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
-          "description": "The credential wallet MUST be able to validate the credential before storing the credentials\n",
+          "description": "The credential wallet MUST be able to validate the credential before storing the credentials",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/6",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
-          "description": "The credential wallet MUST enable cryptographic mechanisms to store the credentials\n",
+          "description": "The credential wallet MUST enable cryptographic mechanisms to store the credentials",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/2/req/7",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.2.-credential-issuance",
           "level": "REQUIRED",
-          "description": "The credential wallet MUST have trusted hardware providing a secure environment (tamper-proof) and storage for cryptographic assets such as keys\n",
+          "description": "The credential wallet MUST have trusted hardware providing a secure environment (tamper-proof) and storage for cryptographic assets such as keys",
           "operationId": "NOT IMPLEMENTED"
         }
       ]
@@ -98,14 +83,13 @@
       "identifier": "https://wallet.govstack.global/spec/1/kdf/3",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.3.-credential-status-management",
       "title": "Credential Status Management",
-      "level": "REQUIRED",
       "content": "An Issuer should be able to issue digitally verifiable credentials to a trusted Wallet.\n\nKey considerations during credential issuance:\n\n-  The Issuer should trust the wallet before sharing the credentials\n-  The Issuer should verify the holder's details before issuing credentials\n-  The wallet should validate the issuer's details before requesting the credentials\n-  The wallet should validate the received credentials before storing the credentials",
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/3/req/1",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.3.-credential-statuses",
           "level": "RECOMMENDED",
-          "description": "The credential issuer SHOULD NOT be able to learn details of the presentation when there is a status check of the credentials by a verifier\n",
+          "description": "The credential issuer SHOULD NOT be able to learn details of the presentation when there is a status check of the credentials by a verifier",
           "operationId": "NOT IMPLEMENTED"
         }
       ]
@@ -114,14 +98,13 @@
       "identifier": "https://wallet.govstack.global/spec/1/kdf/4",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.4.-credential-validity",
       "title": "Credential Validity",
-      "level": "REQUIRED",
       "content": "The wallet and the verifier should be able to verify the validity of the credentials. Validity of credentials means, that\n\n  - The credential signature is verified\n  - The credential has not expired or revoked\n  - A trusted issuer issued the credential",
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/4/req/1",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.4.-credential-validity",
           "level": "RECOMMENDED",
-          "description": "The wallet SHOULD verify the validity of the credential when accessed and show the status to the holder to take appropriate action\n",
+          "description": "The wallet SHOULD verify the validity of the credential when accessed and show the status to the holder to take appropriate action",
           "operationId": "NOT IMPLEMENTED"
         }
       ]
@@ -130,28 +113,27 @@
       "identifier": "https://wallet.govstack.global/spec/1/kdf/5",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.5.-presenting-a-credential",
       "title": "Presenting a Credential",
-      "level": "REQUIRED",
-      "content": "  The wallet should be able to present a credential to a Verifier upon receiving a request from the Verifier.\n\n  Key considerations while sharing a presentation:\n\n  - The wallet should trust the verifier before sharing the credentials\n  - The wallet should authenticate the holder before sharing the credentials\n  - The wallet should collect the consent of the holder before sharing the presentation\n  - The wallet should generate a fresh presentation for every request and every presentation should be bound to the transaction and the verifier.",
+      "content": "The wallet should be able to present a credential to a Verifier upon receiving a request from the Verifier.\n\n  Key considerations while sharing a presentation:\n\n  - The wallet should trust the verifier before sharing the credentials\n  - The wallet should authenticate the holder before sharing the credentials\n  - The wallet should collect the consent of the holder before sharing the presentation\n  - The wallet should generate a fresh presentation for every request and every presentation should be bound to the transaction and the verifier.",
       "requirements": [
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/1",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
-          "description": "The credential verifier MUST be able to trust the credential wallet before requesting the presentations\n",
+          "description": "The credential verifier MUST be able to trust the credential wallet before requesting the presentations",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/2",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
-          "description": "The credential verifier MUST be able to request a verifiable presentation\n",
+          "description": "The credential verifier MUST be able to request a verifiable presentation",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/3",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
-          "description": "The credential wallet MUST be able to validate the verifier before presenting a credential\n",
+          "description": "The credential wallet MUST be able to validate the verifier before presenting a credential",
           "operationId": "NOT IMPLEMENTED"
         },
         {
@@ -165,56 +147,56 @@
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/5",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential issuer SHOULD NOT be involved in the presentation process\n",
+          "description": "The credential issuer SHOULD NOT be involved in the presentation process",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/6",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential wallet (with the holder's consent) SHOULD be able to present a selected subset of the data fields (claims) from a credential while other fields are not revealed to the verifier.\n",
+          "description": "The credential wallet (with the holder's consent) SHOULD be able to present a selected subset of the data fields (claims) from a credential while other fields are not revealed to the verifier.",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/7",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "REQUIRED",
-          "description": "The credential verifier MUST be able to receive the verifiable presentation from the wallet\n",
+          "description": "The credential verifier MUST be able to receive the verifiable presentation from the wallet",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/8",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential verifier SHOULD be able to verify the presentations after receiving the presentation \n",
+          "description": "The credential verifier SHOULD be able to verify the presentations after receiving the presentation",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/9",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential wallet SHOULD enable the holder to present a pseudonym instead of their real identity when authenticating online or presenting credentials, except in cases where identification is mandatory.\n",
+          "description": "The credential wallet SHOULD enable the holder to present a pseudonym instead of their real identity when authenticating online or presenting credentials, except in cases where identification is mandatory.",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/10",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential verifier SHOULD NOT be able to link two presentations to the same holder (unless the holder's information is provided as part of the presentation)\n",
+          "description": "The credential verifier SHOULD NOT be able to link two presentations to the same holder (unless the holder's information is provided as part of the presentation)",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/11",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "Two credential verifiers SHOULD NOT be able to link two presentation transactions to the same holder by sharing the received presentations\n",
+          "description": "Two credential verifiers SHOULD NOT be able to link two presentation transactions to the same holder by sharing the received presentations",
           "operationId": "NOT IMPLEMENTED"
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/12",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "After receiving a presentation the credential verifier SHOULD NOT be able to prove to any third party that the holder had presented the credentials to the verifier for identification purposes earlier.  \nThis requirement can be fulfilled only if the presentation is not signed but secured using the HMAC (Hash-based Message Authentication Code).\n",
+          "description": "After receiving a presentation the credential verifier SHOULD NOT be able to prove to any third party that the holder had presented the credentials to the verifier for identification purposes earlier.  \nThis requirement can be fulfilled only if the presentation is not signed but secured using the HMAC (Hash-based Message Authentication Code).",
           "operationId": "NOT IMPLEMENTED"
         },
         {
@@ -222,21 +204,21 @@
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
           "description": "The credential wallet backend SHOULD NOT be able to track where the credentials are being presented or learn details about the attributes of any transactions performed by the Holder\n",
-          "operationId": "NOT IMPLEMENTED"
+          "operationId": "NOT IMPLEMENTED",
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/14",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential verifier SHOULD NOT be able to prove to any third party the credential's authenticity and the integrity of its attributes that the verifier had previously verified.  \nThis requirement would require using ECDH/HMAC to cryptographically protect the credential, as this process involves a public key provided by the Verifier. This requires an active, trusted component to create the credential on demand,\n",
-          "operationId": "NOT IMPLEMENTED"
+          "description": "The credential verifier SHOULD NOT be able to prove to any third party the credential's authenticity and the integrity of its attributes that the verifier had previously verified.  \nThis requirement would require using ECDH/HMAC to cryptographically protect the credential, as this process involves a public key provided by the Verifier. This requires an active, trusted component to create the credential on demand",
+          "operationId": "NOT IMPLEMENTED",
         },
         {
           "identifier": "https://wallet.govstack.global/spec/1/kdf/5/req/15",
           "link": "https://wallet.govstack.global/6-functional-requirements#id-6.5.-presenting-a-credential",
           "level": "RECOMMENDED",
-          "description": "The credential issuer and the credential verifier should not be able to link an issuance and presentation session to the same holder (unless the Holder provides sufficiently identifying information as part of their authentication to the Issuer and as part of the presented credential shared with the verifier)\n",
-          "operationId": "NOT IMPLEMENTED"
+          "description": "The credential issuer and the credential verifier should not be able to link an issuance and presentation session to the same holder (unless the Holder provides sufficiently identifying information as part of their authentication to the Issuer and as part of the presented credential shared with the verifier)",
+          "operationId": "NOT IMPLEMENTED",
         }
       ]
     },
@@ -244,43 +226,43 @@
       "identifier": "https://wallet.govstack.global/spec/1/kdf/6",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.1.-portability",
       "title": "Portability",
-      "level": "RECOMMENDED",
-      "content": "  The wallet should be able to provide a mechanism for the holder to port credentials from one device to another (when the credentials are locally stored in a device).\n\n  While doing so, the credentials need to be bound in the new device, hence, the wallet should provide a mechanism to cryptographically bind the credentials to the holder in the new device."
+      "content": "The wallet should be able to provide a mechanism for the holder to port credentials from one device to another (when the credentials are locally stored in a device).\n\n  While doing so, the credentials need to be bound in the new device, hence, the wallet should provide a mechanism to cryptographically bind the credentials to the holder in the new device.",
+      "requirements": []
     },
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/7",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.2.-transaction-logs",
-      "title": "Portability",
-      "level": "RECOMMENDED",
-      "content": "The wallet should maintain a comprehensive log displaying details on various actions performed on the credentials in the wallet with timestamps. Some of the key events in the wallet are,\n\n- Downloading a credential in the wallet\n- Sharing a credential with a verifier\n- Removing a credential from the wallet"
+      "title": "Transaction logs",
+      "content": "The wallet should maintain a comprehensive log displaying details on various actions performed on the credentials in the wallet with timestamps. Some of the key events in the wallet are,\n\n- Downloading a credential in the wallet\n- Sharing a credential with a verifier\n- Removing a credential from the wallet",
+      "requirements": []
     },
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/8",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.3.-handling-revoked-and-expired-credentials",
       "title": "Handling revoked and expired credentials",
-      "level": "RECOMMENDED",
-      "content": "The wallet should be able to identify expired and revoked credentials and promptly notify the holder to take appropriate actions."
+      "content": "The wallet should be able to identify expired and revoked credentials and promptly notify the holder to take appropriate actions.",
+      "requirements": []
     },
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/9",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.4.-removing-a-credential-from-the-wallet",
       "title": "Removing a credential from the wallet",
-      "level": "RECOMMENDED",
-      "content": "content: The holder should be able to remove a credential from the wallet."
+      "content": "The holder should be able to remove a credential from the wallet.",
+      "requirements": []
     },
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/10",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.5.-complaint-submission-to-supervisory-body",
       "title": "Complaint Submission to Supervisory Body",
-      "level": "RECOMMENDED",
-      "content": "The wallet must provide a mechanism for users to submit complaints about a verifier to the respective supervisory body."
+      "content": "The wallet must provide a mechanism for users to submit complaints about a verifier to the respective supervisory body.",
+      "requirements": []
     },
     {
       "identifier": "https://wallet.govstack.global/spec/1/kdf/11",
       "link": "https://wallet.govstack.global/4-key-digital-functionalities#id-4.6.6.-data-deletion-request",
       "title": "Data Deletion Request",
-      "level": "RECOMMENDED",
-      "content": "The wallet should allow the holder to request the verifier to delete the previously shared credentials."
+      "content": "The wallet should allow the holder to request the verifier to delete the previously shared credentials.",
+      "requirements": []
     }
   ]
 }
